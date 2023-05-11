@@ -205,6 +205,13 @@ use({
   end,
 })
 
+
+-- More Git commands
+use({
+    'tpope/vim-fugitive',
+    requires = 'tpope/vim-rhubarb',
+})
+
 -- Git Integration
 use({
   'lewis6991/gitsigns.nvim',
@@ -219,18 +226,22 @@ use({
     })
   end,
 })
--- use({
---     'lewis6991/gitsigns.nvim',
---     config = function()
---         require('gitsigns').setup
---         vim.keymap.set('n', ']h', ':Gitsigns next_hunk<CR>')
---         vim.keymap.set('n', '[h', ':Gitsigns prev_hunk<CR>')
---         vim.keymap.set('n', 'gs', ':Gitsigns stage_hunk<CR>')
---         vim.keymap.set('n', 'gS', ':Gitsigns undo_stage_hunk<CR>')
---         vim.keymap.set('n', 'gp', ':Gitsigns preview_hunk<CR>')
---         vim.keymap.set('n', 'gb', ':Gitsigns blame_line<CR>')
---     end,
--- })
+
+-- Floating Terminal
+use({
+    'voldikss/vim-floaterm',
+    config = function()
+        vim.keymap.set('n', '<F1>', ':FloatermToggle<CR>')
+        vim.keymap.set('t', '<F1>', '<C-\\><C-n>:FloatermToggle<CR>')
+        vim.g.floaterm_width = 0.8
+        vim.g.floaterm_height = 0.8
+        vim.g.floaterm_wintitle = 0
+        vim.cmd([[
+            highlight link Floaterm CursorLine
+            highlight link FloatermBorder CursorLineBg
+        ]])
+    end,
+})
 
 
 -- Automatically set up your configuration after cloning packer.nvim
