@@ -168,7 +168,7 @@ use({
         config = function()
             require('user/plugins/nvim-tree')
         end,
-    })
+})
 
 -- A Status Line
 use({
@@ -243,6 +243,20 @@ use({
     end,
 })
 
+-- Improved syntax hyghlighting
+use({
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+        require('nvim-treesitter.install').update({ with_sync =  true })
+    end,
+     requires = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        'JoosepAlviste/nvim-ts-context-commentstring',
+  },
+    config = function()
+        require('user.plugins.treesitter')
+    end,
+})
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
